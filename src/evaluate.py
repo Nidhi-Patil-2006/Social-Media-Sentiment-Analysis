@@ -197,28 +197,49 @@ print("\nComparison Table:\n")
 print(comparison)
 
 # --------------------------------------------------
-# Accuracy Comparison Plot
+# Grouped Comparison Chart
 # --------------------------------------------------
 
-plt.figure(figsize=(6,5))
+metrics = ["Accuracy", "Precision", "Recall", "F1 Score"]
+
+svm_scores = comparison.loc[0, metrics].values
+rf_scores = comparison.loc[1, metrics].values
+
+x = range(len(metrics))
+width = 0.35
+
+plt.figure(figsize=(8,5))
 
 plt.bar(
-    comparison["Model"],
-    comparison["Accuracy"]
+    [i - width/2 for i in x],
+    svm_scores,
+    width=width,
+    label="SVM"
 )
+
+plt.bar(
+    [i + width/2 for i in x],
+    rf_scores,
+    width=width,
+    label="Random Forest"
+)
+
+plt.xticks(x, metrics)
 
 plt.ylim(0,1)
 
-plt.ylabel("Accuracy")
+plt.ylabel("Score")
 
-plt.title("Model Accuracy Comparison")
+plt.title("Performance Comparison of SVM and Random Forest")
+
+plt.legend()
 
 plt.tight_layout()
 
 plt.savefig(
     os.path.join(
         OUTPUT_PLOTS,
-        "accuracy_comparison.png"
+        "model_comparison.png"
     )
 )
 
