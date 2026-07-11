@@ -489,9 +489,8 @@ src/
 
 | Team Member | GitHub | Responsibilities |
 | --- | --- | --- |
-| Member 1 | GitHub Profile | Data preprocessing, sentiment mapping and documentation |
-| Member 2 | GitHub Profile | SVM model development and evaluation |
-| Member 3 | GitHub Profile | Random Forest tuning and Streamlit application |
+| Nidhi Patil | https://github.com/Nidhi-Patil-2006 | Data preprocessing, sentiment mapping and documentation, Random Forest tuning |
+| Prisha Sawant | https://github.com/prisha-s24 | SVM model development and evaluation, Streamlit application |
 
 ---
 
@@ -500,32 +499,9 @@ src/
 * Increase the size of the social media training dataset
 * Improve class balance between sentiment categories
 * Implement multilingual sentiment analysis
-* Perform real-time social media sentiment monitoring
 * Add confidence scores to model predictions
-* Implement aspect-based sentiment analysis
 * Improve sarcasm and irony detection
 * Use word embedding techniques
-* Implement deep learning models such as LSTM
-* Integrate transformer-based models such as BERT
 * Add real-time social media API integration
 
 ---
-
-## 📄 License
-
-This project is developed for **academic and educational purposes** as part of a Machine Learning Laboratory Micro-Project.
-
----
-
-## 🙏 Acknowledgements
-
-* Social Media Sentiment Dataset
-* Kaggle
-* Streamlit
-* Scikit-learn
-* NLTK
-* Pandas
-* NumPy
-* Matplotlib
-* WordCloud
-* Open Source Community
