@@ -1,117 +1,257 @@
-# Social Media Sentiment Analysis
+# 💬 Social Media Sentiment Analysis
 
-A Machine Learning-based web application for classifying social media posts into **Positive, Neutral, and Negative** sentiments.
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.58-red)
+![Scikit--learn](https://img.shields.io/badge/Scikit--learn-ML-green)
+![NLTK](https://img.shields.io/badge/NLTK-NLP-yellow)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-The project implements and compares two supervised Machine Learning algorithms:
+A Machine Learning-based sentiment analysis platform designed to classify social media posts into **Positive**, **Negative**, and **Neutral** sentiments.
 
-- Support Vector Machine (SVM)
-- Random Forest
-
-Textual data is preprocessed and transformed using **TF-IDF Vectorization** before model training. An interactive **Streamlit web application** is provided for Exploratory Data Analysis (EDA), sentiment prediction, and model performance comparison.
+The project combines **Natural Language Processing (NLP)**, **Machine Learning**, and **Interactive Data Visualization** to analyze textual content and compare the performance of **Support Vector Machine (SVM)** and **Random Forest** classifiers through a Streamlit web application.
 
 ---
 
-## Project Objective
+## 📌 Table of Contents
 
-The main objective of this project is to develop a Machine Learning system capable of analyzing the sentiment of social media posts.
+* [Overview](#overview)
+* [Features](#features)
+* [Models Used](#models-used)
+* [Technology Stack](#technology-stack)
+* [Project Structure](#project-structure)
+* [Workflow](#workflow)
+* [Installation](#installation)
+* [Using uv](#using-uv)
+* [Running the ML Pipeline](#running-the-ml-pipeline)
+* [Deployment](#deployment)
+* [Team Members](#team-members)
+* [Future Enhancements](#future-enhancements)
+* [License](#license)
+* [Acknowledgements](#acknowledgements)
+
+---
+
+## 📖 Overview
+
+Social Media Sentiment Analysis is a Machine Learning project developed to analyze the sentiment expressed in social media posts.
 
 The system classifies textual content into three sentiment categories:
 
-- Positive
-- Neutral
-- Negative
+* Positive
+* Negative
+* Neutral
 
-The project also compares the performance of Support Vector Machine and Random Forest classifiers using standard Machine Learning evaluation metrics.
+The project implements and compares two supervised Machine Learning algorithms, **Support Vector Machine** and **Random Forest**.
 
----
+The platform supports:
 
-## Dataset
+* Social media text preprocessing
+* Emotion-to-sentiment mapping
+* Exploratory Data Analysis
+* TF-IDF feature extraction
+* SVM-based sentiment prediction
+* Random Forest-based sentiment prediction
+* Model performance comparison
+* Interactive Streamlit dashboard
 
-The project uses a Social Media Sentiment Dataset containing social media posts and their corresponding emotion or sentiment labels.
-
-### Dataset Statistics
-
-| Parameter | Value |
-|---|---:|
-| Original Records | 732 |
-| Cleaned Records | 726 |
-| Sentiment Classes | 3 |
-| Positive Samples | 438 |
-| Negative Samples | 188 |
-| Neutral Samples | 100 |
-
-The original emotion labels were mapped into three main sentiment categories: **Positive, Neutral, and Negative**.
+The original dataset contains multiple emotional labels. These labels are grouped into the three primary sentiment categories to simplify the multi-class sentiment classification task.
 
 ---
 
-## Machine Learning Workflow
+## ✨ Features
+
+### 📊 Exploratory Data Analysis
+
+The EDA dashboard provides visual insights into the cleaned sentiment dataset.
+
+Features include:
+
+* Dataset preview
+* Dataset summary
+* Missing value analysis
+* Sentiment class distribution
+* Sentiment percentage analysis
+* Most frequent word analysis
+* Sentence length distribution
+* Positive sentiment word cloud
+* Neutral sentiment word cloud
+* Negative sentiment word cloud
+
+### 🤖 Sentiment Prediction
+
+The application provides separate prediction pages for both trained Machine Learning models:
+
+* Support Vector Machine
+* Random Forest
+
+Each model page allows users to enter a social media post and receive the predicted sentiment.
+
+The possible prediction classes are:
+
+* 🟢 Positive
+* 🔴 Negative
+* ⚪ Neutral
+
+### 🧹 NLP Preprocessing
+
+The preprocessing pipeline includes:
+
+* Removal of unnecessary columns
+* Missing value handling
+* Emotion-to-sentiment mapping
+* Text lowercasing
+* URL removal
+* User mention removal
+* Hashtag symbol removal
+* Punctuation removal
+* Number removal
+* Stopword removal
+* Lemmatization
+* TF-IDF feature extraction
+
+### 📈 Model Comparison
+
+The Model Comparison page provides a visual comparison of SVM and Random Forest using:
+
+* Accuracy
+* Precision
+* Recall
+* F1-Score
+* Grouped performance comparison chart
+* SVM confusion matrix
+* Random Forest confusion matrix
+
+---
+
+## 🧠 Models Used
+
+| Model | Type | Description |
+| --- | --- | --- |
+| Support Vector Machine | Machine Learning | Linear classifier suitable for sparse and high-dimensional TF-IDF text features |
+| Random Forest | Machine Learning | Ensemble classifier using multiple decision trees with tuned hyperparameters |
+
+### Support Vector Machine
+
+SVM was selected because of its effectiveness in high-dimensional text classification problems. The model uses TF-IDF features and balanced class weights to handle the unequal sentiment class distribution.
+
+### Random Forest
+
+Random Forest combines multiple decision trees to perform sentiment classification. The model was tuned using increased estimators, controlled tree depth, minimum split size, minimum leaf size, and balanced class weights.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Tools |
+| --- | --- |
+| Programming Language | Python 3.11 |
+| Web Framework | Streamlit |
+| Data Handling | Pandas, NumPy |
+| Visualization | Matplotlib, WordCloud |
+| NLP | NLTK |
+| Feature Extraction | TF-IDF |
+| Machine Learning | Scikit-learn |
+| Model Serialization | Joblib |
+| Environment Management | uv |
+| Deployment | Streamlit Community Cloud |
+
+---
+
+## 📂 Project Structure
 
 ```text
-Raw Dataset
-      |
-      v
-Data Preprocessing
-      |
-      v
-Sentiment Mapping
-      |
-      v
-Text Cleaning
-      |
-      v
-TF-IDF Vectorization
-      |
-      v
-Train-Test Split
-      |
-      +-------------------+
-      |                   |
-      v                   v
-     SVM             Random Forest
-      |                   |
-      +---------+---------+
-                |
-                v
-        Model Evaluation
-                |
-                v
-      Sentiment Prediction
-                |
-                v
-       Streamlit Web App
+SOCMED/
+│
+├── app.py
+├── requirements.txt
+├── pyproject.toml
+├── uv.lock
+├── README.md
+│
+├── dataset/
+│   ├── raw/
+│   │   └── sentimentdataset.csv
+│   │
+│   └── cleaned_dataset.csv
+│
+├── models/
+│   ├── svm_model.pkl
+│   ├── random_forest_model.pkl
+│   ├── tfidf_vectorizer.pkl
+│   ├── X_test.pkl
+│   └── y_test.pkl
+│
+├── outputs/
+│   ├── metrics/
+│   │   └── comparison.csv
+│   │
+│   └── plots/
+│       ├── model_comparison.png
+│       ├── svm_confusion_matrix.png
+│       └── random_forest_confusion_matrix.png
+│
+├── pages/
+│   ├── home.py
+│   ├── eda.py
+│   ├── svm.py
+│   ├── randomforest.py
+│   └── comparison.py
+│
+└── src/
+    ├── preprocessing.py
+    ├── train_models.py
+    ├── evaluate.py
+    └── predict.py
 ```
 
 ---
 
-## Data Preprocessing
+## 🔄 Workflow
 
-The following preprocessing techniques are applied to the social media text:
-
-- Removal of unnecessary columns
-- Handling of missing values
-- Emotion-to-sentiment mapping
-- Conversion to lowercase
-- Removal of URLs
-- Removal of user mentions
-- Removal of hashtag symbols
-- Removal of punctuation
-- Removal of numbers
-- Removal of stopwords
-- Lemmatization
-
-The cleaned dataset is stored as:
-
-```text
-dataset/cleaned_dataset.csv
-```
+1. Load the social media sentiment dataset
+2. Remove unnecessary dataset attributes
+3. Handle missing values
+4. Map multiple emotion labels into Positive, Negative, and Neutral sentiments
+5. Clean and preprocess social media text
+6. Apply stopword removal and lemmatization
+7. Convert textual data into numerical TF-IDF features
+8. Split the dataset into training and testing sets
+9. Train Support Vector Machine and Random Forest models
+10. Tune model parameters and handle class imbalance
+11. Evaluate models using standard classification metrics
+12. Save trained models and the TF-IDF vectorizer
+13. Build the Streamlit dashboard
+14. Perform interactive sentiment prediction and model comparison
 
 ---
 
-## Feature Extraction
+## 📊 Dataset
 
-The project uses **TF-IDF (Term Frequency-Inverse Document Frequency)** to convert textual data into numerical feature vectors.
+The original social media sentiment dataset contains **732 records** and **15 attributes**.
 
-The TF-IDF vectorizer is configured using:
+After preprocessing, the final dataset contains **726 valid records** with two required attributes:
+
+* Text
+* Sentiment
+
+### Sentiment Distribution
+
+| Sentiment | Number of Samples |
+| --- | ---: |
+| Positive | 438 |
+| Negative | 188 |
+| Neutral | 100 |
+| **Total** | **726** |
+
+The original emotion labels were mapped into the three main sentiment categories: **Positive**, **Negative**, and **Neutral**.
+
+---
+
+## 🔤 TF-IDF Feature Extraction
+
+TF-IDF Vectorization is used to convert the cleaned social media text into numerical features.
+
+The vectorizer is configured using:
 
 ```python
 TfidfVectorizer(
@@ -121,35 +261,39 @@ TfidfVectorizer(
 )
 ```
 
-### TF-IDF Configuration
+The configuration supports:
 
-- `max_features=8000` allows the vectorizer to retain up to 8000 important textual features.
-- `ngram_range=(1,2)` extracts both individual words and two-word combinations.
-- `sublinear_tf=True` reduces the excessive influence of highly frequent terms.
+* Up to 8000 textual features
+* Unigram feature extraction
+* Bigram feature extraction
+* Sublinear term frequency scaling
+
+This allows the models to identify important individual words and two-word combinations within social media posts.
 
 ---
 
-## Machine Learning Models
+## 📈 Model Development and Improvement
 
-### Support Vector Machine
+During initial training, the models achieved the following accuracy:
 
-Support Vector Machine is used because of its effectiveness in handling high-dimensional and sparse textual data.
+| Model | Initial Accuracy |
+| --- | ---: |
+| Support Vector Machine | 77.40% |
+| Random Forest | 75.34% |
 
-The SVM classifier uses a linear kernel and balanced class weights.
+Initially, SVM performed better than Random Forest for TF-IDF-based text classification.
 
-```python
-SVC(
-    kernel="linear",
-    class_weight="balanced",
-    random_state=42
-)
-```
+The models were further improved using:
 
-### Random Forest
+* Increased TF-IDF feature size
+* Sublinear TF scaling
+* Balanced class weights
+* Increased number of Random Forest trees
+* Maximum tree depth control
+* Minimum split sample tuning
+* Minimum leaf sample tuning
 
-Random Forest is an ensemble learning algorithm that combines multiple decision trees.
-
-The model was tuned to improve sentiment classification and minority class detection.
+The tuned Random Forest model uses:
 
 ```python
 RandomForestClassifier(
@@ -162,284 +306,135 @@ RandomForestClassifier(
 )
 ```
 
----
-
-## Model Training
-
-The cleaned dataset is divided into training and testing sets using an **80:20 train-test split**.
-
-Stratified sampling is applied to preserve the sentiment class distribution.
-
-```python
-train_test_split(
-    X,
-    y,
-    test_size=0.20,
-    random_state=42,
-    stratify=y
-)
-```
+The final performance of both models is compared using Accuracy, Precision, Recall, and F1-Score.
 
 ---
 
-## Model Evaluation
+## ⚙️ Installation
 
-Both Machine Learning models are evaluated using the following metrics:
-
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Classification Report
-- Confusion Matrix
-
-The initial model accuracies were:
-
-| Model | Initial Accuracy |
-|---|---:|
-| Support Vector Machine | 77.40% |
-| Random Forest | 75.34% |
-
-The models were subsequently improved using TF-IDF feature configuration, balanced class weights, and Random Forest hyperparameter tuning.
-
-Final model results are generated and stored in:
-
-```text
-outputs/metrics/comparison.csv
-```
-
-Evaluation plots are stored in:
-
-```text
-outputs/plots/
-```
-
----
-
-## Streamlit Application
-
-The project includes an interactive web application developed using Streamlit.
-
-The application consists of the following pages:
-
-### Home
-
-Provides an introduction to the project, objectives, dataset overview, Machine Learning workflow, and technologies used.
-
-### Exploratory Data Analysis
-
-Displays visual analysis of the cleaned dataset, including:
-
-- Dataset preview
-- Dataset statistics
-- Sentiment distribution
-- Most frequent words
-- Sentence length distribution
-- Positive sentiment word cloud
-- Neutral sentiment word cloud
-- Negative sentiment word cloud
-
-### SVM Predictor
-
-Allows users to enter a social media post and predict its sentiment using the trained Support Vector Machine classifier.
-
-### Random Forest Predictor
-
-Allows users to classify social media text using the trained Random Forest model.
-
-### Model Comparison
-
-Displays and compares:
-
-- Accuracy
-- Precision
-- Recall
-- F1-Score
-- Performance comparison chart
-- SVM confusion matrix
-- Random Forest confusion matrix
-
----
-
-## Project Structure
-
-```text
-SOCMED/
-|
-|-- app.py
-|-- README.md
-|-- requirements.txt
-|-- pyproject.toml
-|
-|-- dataset/
-|   |-- raw/
-|   |   `-- sentimentdataset.csv
-|   |
-|   `-- cleaned_dataset.csv
-|
-|-- models/
-|   |-- svm_model.pkl
-|   |-- random_forest_model.pkl
-|   |-- tfidf_vectorizer.pkl
-|   |-- X_test.pkl
-|   `-- y_test.pkl
-|
-|-- outputs/
-|   |-- metrics/
-|   |   |-- comparison.csv
-|   |   |-- svm_metrics.txt
-|   |   `-- random_forest_metrics.txt
-|   |
-|   `-- plots/
-|       |-- model_comparison.png
-|       |-- svm_confusion_matrix.png
-|       `-- random_forest_confusion_matrix.png
-|
-|-- pages/
-|   |-- home.py
-|   |-- eda.py
-|   |-- svm.py
-|   |-- randomforest.py
-|   `-- comparison.py
-|
-`-- src/
-    |-- preprocessing.py
-    |-- train_models.py
-    |-- evaluate.py
-    `-- predict.py
-```
-
----
-
-## Technologies Used
-
-### Programming Language
-
-- Python
-
-### Machine Learning
-
-- Scikit-learn
-
-### Natural Language Processing
-
-- NLTK
-- TF-IDF Vectorization
-
-### Data Processing
-
-- Pandas
-- NumPy
-
-### Data Visualization
-
-- Matplotlib
-- WordCloud
-
-### Web Application
-
-- Streamlit
-
-### Model Serialization
-
-- Joblib
-
-### Environment and Package Management
-
-- uv
-
----
-
-## Installation
-
-### 1. Clone the Repository
+Clone the repository:
 
 ```bash
 git clone <repository-url>
-```
-
-Move into the project directory:
-
-```bash
 cd socmed
 ```
 
-### 2. Initialize the uv Project
-
-If the project has not already been initialized:
+Create a virtual environment:
 
 ```bash
-uv init .
+python -m venv .venv
 ```
 
-### 3. Install Project Dependencies
-
-If `pyproject.toml` and `uv.lock` are available:
-
-```bash
-uv sync
-```
-
-Alternatively, dependencies can be installed from `requirements.txt`:
-
-```bash
-uv add -r requirements.txt
-```
-
-### 4. Activate the Virtual Environment
-
-On Windows:
+Activate the virtual environment on Windows:
 
 ```bash
 .venv\Scripts\activate
 ```
 
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the Streamlit application:
+
+```bash
+streamlit run app.py
+```
+
 ---
 
-## Running the Machine Learning Pipeline
+## ⚡ Using uv
 
-The complete Machine Learning pipeline can be executed in the following order.
+The project uses `uv` for Python environment and dependency management.
 
-### Step 1: Preprocess the Dataset
+Initialize the project:
+
+```bash
+uv init .
+```
+
+Install dependencies from `requirements.txt`:
+
+```bash
+uv add -r requirements.txt
+```
+
+Alternatively, if `pyproject.toml` and `uv.lock` are available:
+
+```bash
+uv sync
+```
+
+Activate the virtual environment on Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+Run the Streamlit application:
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🧪 Running the ML Pipeline
+
+### Step 1: Data Preprocessing
+
+Run:
 
 ```bash
 python src/preprocessing.py
 ```
 
-This generates:
+This generates the cleaned dataset:
 
 ```text
 dataset/cleaned_dataset.csv
 ```
 
-### Step 2: Train the Models
+### Step 2: Model Training
+
+Run:
 
 ```bash
 python src/train_models.py
 ```
 
-This trains the SVM and Random Forest classifiers and saves the trained models in the `models` directory.
+This trains the SVM and Random Forest classifiers and saves the trained models and TF-IDF vectorizer.
 
-### Step 3: Evaluate the Models
+### Step 3: Model Evaluation
+
+Run:
 
 ```bash
 python src/evaluate.py
 ```
 
-This generates evaluation metrics, comparison results, and confusion matrices.
+This generates:
 
-### Step 4: Test Predictions
+* Performance metrics
+* Model comparison results
+* Grouped performance chart
+* SVM confusion matrix
+* Random Forest confusion matrix
+
+### Step 4: Test Sentiment Prediction
+
+Run:
 
 ```bash
 python src/predict.py
 ```
 
-Enter a social media post when prompted.
-
-Example:
+Example input:
 
 ```text
-Enter a social media post: very bad movie
+very bad movie
 ```
 
 Example output:
@@ -452,127 +447,85 @@ Random Forest Prediction:
 Negative
 ```
 
----
+### Step 5: Run the Streamlit Application
 
-## Running the Streamlit Application
-
-Start the Streamlit application using:
+Run:
 
 ```bash
 streamlit run app.py
 ```
 
-The application will open in the web browser.
-
 Use the sidebar to navigate between:
 
-- Home
-- EDA
-- SVM Predictor
-- Random Forest Predictor
-- Model Comparison
+* Home
+* EDA
+* SVM Predictor
+* Random Forest Predictor
+* Model Comparison
 
 ---
 
-## Example Predictions
+## 🚀 Deployment
 
-### Positive Sentiment
+The application can be deployed using **Streamlit Community Cloud**.
 
-```text
-I absolutely loved the concert yesterday!
-```
+🔗 **Deployment URL:** `<Add Streamlit Deployment URL>`
 
-Expected sentiment:
+The main files required for deployment include:
 
 ```text
-Positive
-```
-
-### Negative Sentiment
-
-```text
-Very bad movie
-```
-
-Expected sentiment:
-
-```text
-Negative
-```
-
-### Neutral Sentiment
-
-```text
-I wonder how this new AI model works.
-```
-
-Expected sentiment:
-
-```text
-Neutral
+app.py
+requirements.txt
+pages/
+models/
+dataset/
+outputs/
+src/
 ```
 
 ---
 
-## Limitations
+## 👥 Team Members
 
-- The dataset contains a limited number of social media posts.
-- The sentiment classes are moderately imbalanced.
-- The Positive class contains more samples than the Negative and Neutral classes.
-- TF-IDF relies on vocabulary observed during model training.
-- Unseen words and expressions may be difficult for the models to classify correctly.
-- Short and ambiguous social media posts may occasionally be misclassified.
-- The models do not fully understand contextual meaning, sarcasm, or irony.
+| Team Member | GitHub | Responsibilities |
+| --- | --- | --- |
+| Member 1 | GitHub Profile | Data preprocessing, sentiment mapping and documentation |
+| Member 2 | GitHub Profile | SVM model development and evaluation |
+| Member 3 | GitHub Profile | Random Forest tuning and Streamlit application |
 
 ---
 
-## Future Scope
+## 🌱 Future Enhancements
 
-The project can be further improved by:
-
-- Increasing the size of the training dataset.
-- Using a more balanced sentiment dataset.
-- Applying advanced NLP techniques.
-- Implementing word embeddings.
-- Using deep learning models such as LSTM.
-- Applying transformer-based models such as BERT.
-- Performing automatic hyperparameter optimization.
-- Adding real-time social media data analysis.
-- Supporting multilingual sentiment analysis.
-- Improving sarcasm and contextual sentiment detection.
-
----
-
-## Conclusion
-
-This project demonstrates the complete Machine Learning workflow for social media sentiment analysis. Text preprocessing and TF-IDF feature extraction were used to transform social media posts into numerical features.
-
-Support Vector Machine and Random Forest classifiers were trained, tuned, evaluated, and compared using standard classification metrics. An interactive Streamlit application was developed to provide dataset exploration, real-time sentiment prediction, and model performance comparison.
-
-The project highlights the importance of data preprocessing, feature extraction, class balancing, and hyperparameter tuning in the development of an effective Machine Learning-based text classification system.
+* Increase the size of the social media training dataset
+* Improve class balance between sentiment categories
+* Implement multilingual sentiment analysis
+* Perform real-time social media sentiment monitoring
+* Add confidence scores to model predictions
+* Implement aspect-based sentiment analysis
+* Improve sarcasm and irony detection
+* Use word embedding techniques
+* Implement deep learning models such as LSTM
+* Integrate transformer-based models such as BERT
+* Add real-time social media API integration
 
 ---
 
-## References
+## 📄 License
 
-1. C. D. Manning, P. Raghavan, and H. Schütze, *Introduction to Information Retrieval*. Cambridge University Press, 2008.
-
-2. T. Joachims, "Text Categorization with Support Vector Machines: Learning with Many Relevant Features," in *Proceedings of the European Conference on Machine Learning*, 1998.
-
-3. L. Breiman, "Random Forests," *Machine Learning*, vol. 45, no. 1, pp. 5-32, 2001.
-
-4. G. Salton and C. Buckley, "Term-Weighting Approaches in Automatic Text Retrieval," *Information Processing & Management*, vol. 24, no. 5, pp. 513-523, 1988.
-
-5. F. Pedregosa et al., "Scikit-learn: Machine Learning in Python," *Journal of Machine Learning Research*, vol. 12, pp. 2825-2830, 2011.
-
-6. S. Bird, E. Klein, and E. Loper, *Natural Language Processing with Python*. O'Reilly Media, 2009.
+This project is developed for **academic and educational purposes** as part of a Machine Learning Laboratory Micro-Project.
 
 ---
 
-## Project Type
+## 🙏 Acknowledgements
 
-Machine Learning Laboratory Micro-Project
-
-**Topic:** Social Media Sentiment Analysis
-
-**Models:** Support Vector Machine and Random Forest
+* Social Media Sentiment Dataset
+* Kaggle
+* Streamlit
+* Scikit-learn
+* NLTK
+* Pandas
+* NumPy
+* Matplotlib
+* WordCloud
+* Open Source Community
