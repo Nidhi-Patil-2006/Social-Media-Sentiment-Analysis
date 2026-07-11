@@ -8,6 +8,20 @@ from src.predict import predict_random_forest
 
 st.title("🌳 Random Forest Predictor")
 
+
+st.markdown("""
+### About the Model
+
+Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve prediction accuracy and reduce overfitting. In this project, it classifies social media posts into **Positive**, **Negative**, or **Neutral** sentiments.
+
+#### Features
+- ✅ Ensemble Learning Algorithm
+- ✅ 500 Decision Trees
+- ✅ Tuned Hyperparameters
+- ✅ Balanced Class Weights
+""")
+
+st.divider()
 st.markdown("""
 Enter a social media post below to predict its sentiment using the
 **Random Forest** model.

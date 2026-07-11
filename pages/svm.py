@@ -8,6 +8,21 @@ from src.predict import predict_svm
 
 st.title("🧠 Support Vector Machine Predictor")
 
+
+st.markdown("""
+### About the Model
+
+Support Vector Machine (SVM) is a supervised machine learning algorithm used for text classification. 
+In this project, SVM classifies social media posts as **Positive**, **Negative**, or **Neutral** based on their textual content.
+
+#### Features
+- ✅ Linear SVM Classifier
+- ✅ TF-IDF Feature Extraction
+- ✅ Balanced Class Weights
+- ✅ Suitable for sparse, high-dimensional text data
+""")
+
+st.divider()
 st.markdown("""
 Enter a social media post below to predict its sentiment using the
 **Support Vector Machine (SVM)** model.

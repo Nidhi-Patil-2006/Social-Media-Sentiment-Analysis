@@ -34,8 +34,29 @@ Two supervised Machine Learning algorithms are implemented and compared:
 - Support Vector Machine (SVM)
 - Random Forest
 """)
-
 st.markdown("---")
+st.markdown("""
+## Why Sentiment Analysis?
+
+Manually analyzing millions of social media posts is both time-consuming and impractical. Machine Learning enables this process to be automated, making large-scale sentiment analysis both efficient and reliable.
+
+### Applications
+
+**🏢 Brand Monitoring**
+- Monitor customer opinions about products, services, and marketing campaigns in real time.
+
+**🚨 Crisis Management**
+- Detect sudden increases in negative sentiment, allowing organizations to respond before issues escalate.
+
+**📈 Financial Forecasting**
+- Analyze public sentiment surrounding companies to support investment decisions and market trend analysis.
+
+**🗳️ Political & Social Research**
+- Measure public opinion on elections, policies, and social events through large-scale social media analysis.
+""")
+
+st.divider()
+
 
 # --------------------------------------------------
 # Project Objectives
@@ -122,33 +143,8 @@ st.markdown("---")
 # Models Used
 # --------------------------------------------------
 
-st.header("🤖 Machine Learning Models")
 
-left, right = st.columns(2)
 
-with left:
-
-    st.subheader("🧠 Support Vector Machine")
-
-    st.write("""
-- Linear SVM Classifier
-- TF-IDF Features
-- Balanced Class Weights
-- Suitable for sparse high-dimensional text data
-""")
-
-with right:
-
-    st.subheader("🌳 Random Forest")
-
-    st.write("""
-- Ensemble Learning Algorithm
-- 500 Decision Trees
-- Tuned Hyperparameters
-- Balanced Class Weights
-""")
-
-st.markdown("---")
 
 # --------------------------------------------------
 # Evaluation Metrics
