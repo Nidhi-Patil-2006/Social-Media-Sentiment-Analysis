@@ -26,8 +26,6 @@ The project combines **Natural Language Processing (NLP)**, **Machine Learning**
 * [Deployment](#deployment)
 * [Team Members](#team-members)
 * [Future Enhancements](#future-enhancements)
-* [License](#license)
-* [Acknowledgements](#acknowledgements)
 
 ---
 
